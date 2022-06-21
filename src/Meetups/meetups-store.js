@@ -1,36 +1,37 @@
 import {writable} from 'svelte/store';
 
-const meetups = writable([
-    {
-        id: 'm1',
-        title: 'Coding Bootcamp',
-        subtitle: 'Learn to code in 2 hours',
-        description: 'In this meetup, we will have some experts that teach you how to code',
-        imageUrl: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.wSpWJQx9RlrZPbULL0OqnAHaJ3%26pid%3DApi&f=1',
-        address: '27th Nerd Road. 4324423 New York',
-        contactEmail: 'code@test.com',
-        isFavorite: false
-    },
-    {
-        id: 'm2',
-        title: 'Swim Together',
-        subtitle: 'Let\'s go for a swim',
-        description: 'We will simple swim some rounds',
-        imageUrl: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.dSzRmdJneez9VkWadwrPAgHaIu%26pid%3DApi&f=1',
-        address: '27th Nerd Road. 4324423 New York',
-        contactEmail: 'swim@test.com',
-        isFavorite: false
-    }
+const meetups = writable([]);
+//     {
+//         id: 'm1',
+//         title: 'Coding Bootcamp',
+//         subtitle: 'Learn to code in 2 hours',
+//         description: 'In this meetup, we will have some experts that teach you how to code',
+//         imageUrl: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.wSpWJQx9RlrZPbULL0OqnAHaJ3%26pid%3DApi&f=1',
+//         address: '27th Nerd Road. 4324423 New York',
+//         contactEmail: 'code@test.com',
+//         isFavorite: false
+//     },
+//     {
+//         id: 'm2',
+//         title: 'Swim Together',
+//         subtitle: 'Let\'s go for a swim',
+//         description: 'We will simple swim some rounds',
+//         imageUrl: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.dSzRmdJneez9VkWadwrPAgHaIu%26pid%3DApi&f=1',
+//         address: '27th Nerd Road. 4324423 New York',
+//         contactEmail: 'swim@test.com',
+//         isFavorite: false
+//     }
 
-]);
+// ]);
 
 const customMeetupStore = {
     subscribe: meetups.subscribe,
+    setMeetups: (meetupArray) => {
+        meetups.set(meetupArray);
+    },
     addMeetup: meetupData => {
         const newMeetup = {
-            ...meetupData,
-            id: Math.random().toString(),
-            isFavorite: false
+            ...meetupData
         };
         meetups.update(items => {
             return [newMeetup, ...items];
